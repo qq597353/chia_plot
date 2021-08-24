@@ -14,20 +14,20 @@ __author__ = '大鱼哥'
 # Sponsor/Support(赞助/支持) (XCH):  xch13ejpkjskwd46dz4r3979gjghpdhs29m59r5sgtscfm6hdds467cqpc2749
 # Youtube频道 : https://www.youtube.com/channel/UCoot7-1rYV18wVNbQrR8JXA
 
-# 'chia_path' :           奇亚程序目录 windows下在 'C:/Users/XXXXXXX/AppData/Local/chia-blockchain/app-1.1.X/resources/app.asar.unpacked/daemon/', linux下可能在 '/usr/lib/chia-blockchain/resources/app.asar.unpacked/daemon/'
-# farmer_public_key       你的farmer_public_key,无需导入钱包,无需住记词
-# pool_public_key         你的pool_public_key,无需导入钱包,无需住记词
-# global_start_interval   全局(所有队列)启动间隔,单位秒,每个启动线程都需要满足此条件
-# global_phase1_cnt       全局(所有队列)处于phase1阶段的线程总量不能超过这个值
-# pools.pool_name         队列名称
-# pools.pool_run_cnt      队列中允许同时运行的总数
-# pools.pool_start_interval  队列启动间隔,单位秒
-# pools.threads           P盘任务的线程数
-# pools.thread_k          P盘任务的K值
-# pools.thread_mem        P盘任务的内存占用值
-# pools.thread_tmp_path   P盘任务的tmp目录
-# pools.thread_tmp_path2  P盘任务的tmp2目录
-# pools.thread_target     P盘任务的目标目录
+# 'chia_path' :             奇亚程序目录 windows下在 'C:/Users/XXXXXXX/AppData/Local/chia-blockchain/app-1.1.X/resources/app.asar.unpacked/daemon/', linux下可能在 '/usr/lib/chia-blockchain/resources/app.asar.unpacked/daemon/'
+# farmer_public_key         你的farmer_public_key,无需导入钱包,无需住记词
+# Pool_contract_address_key 你的矿池key,通过创建 plot NFT获得,无需导入钱包,无需住记词
+# global_start_interval     全局(所有队列)启动间隔,单位秒,每个启动线程都需要满足此条件
+# global_phase1_cnt         全局(所有队列)处于phase1阶段的线程总量不能超过这个值
+# pools.pool_name           队列名称
+# pools.pool_run_cnt        队列中允许同时运行的总数
+# pools.pool_start_interval 队列启动间隔,单位秒
+# pools.threads             P盘任务的线程数
+# pools.thread_k            P盘任务的K值
+# pools.thread_mem          P盘任务的内存占用值
+# pools.thread_tmp_path     P盘任务的tmp目录
+# pools.thread_tmp_path2    P盘任务的tmp2目录
+# pools.thread_target       P盘任务的目标目录
 plot_config = {}
 plot_stat = {}
 
@@ -235,7 +235,7 @@ def start_pool_thread(pool) :
         print('start_pool_thread... ')
         cmd = plot_config['chia_path'] + 'chia plots create -n 1 ' 
         cmd += '-f ' + plot_config['farmer_public_key'] + ' ' 
-        cmd += '-p ' + plot_config['pool_public_key'] + ' ' 
+        cmd += '-c ' + plot_config['Pool_contract_address_key'] + ' ' 
         cmd += '-r ' + str(pool['threads']) + ' ' 
         cmd += '-k ' + str(pool['thread_k']) + ' ' 
         cmd += '-b ' + str(pool['thread_mem']) + ' ' 
